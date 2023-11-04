@@ -1,4 +1,11 @@
 <?php
+$conn=mysqli_connect('localhost','root','root','win2');
+
+if($conn){
+    echo'success';
+}else{
+    echo'fail';
+}
 $FirstName =  $_POST['FirstName'];
 $LastName =   $_POST['LastName'];
 $Email =      $_POST['Email'];
