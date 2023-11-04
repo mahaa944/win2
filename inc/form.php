@@ -4,27 +4,41 @@ $FirstName =  $_POST['FirstName'];
 $LastName =   $_POST['LastName'];
 $Email =      $_POST['Email'];
 
+$errors=[
+'FirstNameError' =>'',
+'LastNameError' =>'',
+'EmailError' =>'',
+];
+
+
 if (isset($_POST['submit'])){
-    $sql = "INSERT INTO users(FirstName, LastName, Email)
-    VALUES('$FirstName','$LastName','$Email')";
-    
     
     if(empty($FirstName)){
-    echo "First name empty";
+    $errors['FirstNameError']='FirstNameisEmpty';
     }
-    elseif(empty($LastName)){
-        echo "Last name empty";
+    if (empty($LastName)){
+    $errors['LastNameError']='LastNameisEmpty';
     }
-    elseif(empty($Email)){
-            echo "Email";
+    if (empty($Email)){
+        $errors['EmailError']='EmailisEmpty';
+
     }elseif(!filter_var($Email,FILTER_VALIDATE_EMAIL)){
-    echo'false email'
+    $errors['EmailError']='EmailisFalse';
     } 
-    else{
-    if(mysqli_query($conn,$sql)){
+    if(!array_filter($errors)){
+        $FirstName =  mysqli_real_escape_string($conn,$_POST['FirstName']);
+        $LastName =   mysqli_real_escape_string($conn,$_POST['LastName']);
+        $Email =      mysqli_real_escape_string($conn,$_POST['Email']);
+        
+        $sql = "INSERT INTO users(FirstName, LastName, Email)
+        VALUES('$FirstName','$LastName','$Email')";
+
+   if(mysqli_query($conn,$sql)){
     header('Location:index.php');
-     } else {
+     }
+     else {
         echo"ERROR:" . mysqli_error($conn);
     }
+   
     }
-    }
+}
