@@ -54,7 +54,4 @@ include './inc/db_close.php';
 <?php foreach($users as $user) : ?>
 <h1><?php echo htmlspecialchars($user['FirstName']).'<br>'.htmlspecialchars($user['Email']);?></h1>
 <?php endforeach; ?>
-
-
-
 <?php include_once'./parts/footer.php';?>
