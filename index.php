@@ -9,6 +9,7 @@ include './inc/db_close.php';
  <?php include'./parts/header.php';?>
 
 
+ <div class="position-relative text-center">
   <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
   <label for="floatingInput">Email address</label>
 </div>
@@ -19,14 +20,14 @@ include './inc/db_close.php';
 </div>
 
 <ul class="list-group">
-  <li class="list-group-item disabled" aria-disabled="true">A disabled item</li>
-  <li class="list-group-item">A second item</li>
-  <li class="list-group-item">A third item</li>
-  <li class="list-group-item">A fourth item</li>
-  <li class="list-group-item">And a fifth one</li>
+  <li class="list-group-item">اربح</li>
+  <li class="list-group-item">باقي على فتح التسجيل</li>
+  <h3 id="countdown"></h3>
+  <li class="list-group-item">للسحب الربح على نسخه مجانيه من البرنامج</li>
+  <li class="list-group-item">cooming soon</li>
 </ul>
 
-<div class="position-relative text-center">
+</div>
 <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="50%" height="50%" fill="#777"></rect></svg>
 <div class="form-floating mb-3">
 
@@ -51,7 +52,18 @@ include './inc/db_close.php';
 </form>
 </div>
 </div>
+<div id="cards" class="row mb-5 pb-5">
+  <button id="winner" type="button">اختيار الرابح </button>
 <?php foreach($users as $user) : ?>
-<h1><?php echo htmlspecialchars($user['FirstName']).'<br>'.htmlspecialchars($user['Email']);?></h1>
-<?php endforeach; ?>
+  <div class="col-5m pb-6">
+  <div class="card my-2 bg-light">
+  <div class="card-body">
+  <h5 class="card-title"><h1><?php echo htmlspecialchars($user['FirstName']).'<br>'.htmlspecialchars($user['Email']);?></h1>
+  <p class="card-text"><h1><?php echo htmlspecialchars($user['FirstName']).'<br>'.htmlspecialchars($user['Email']);?></h1>
+
+  </div>
+</div>
+</div>
+  <?php endforeach; ?>
+  </div>
 <?php include_once'./parts/footer.php';?>
