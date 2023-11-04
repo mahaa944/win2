@@ -1,17 +1,9 @@
 <?php
 include './inc/db.php';
-
-$FirstName =  $_POST['FirstName'];
-$LastName =   $_POST['LastName'];
-$Email =      $_POST['Email'];
-
-if (isset($_POST['submit'])){
-//echo $FirstName . '' . $LastName .'' . $Email;
-$sql="INSERT INTO users(FirsName,LastName,Email)
-VALUES('$FirstName','$LastName','$Email')";
+include './inc/form.php';
+$sql= 'SELECT * FROM users' ;
 mysqli_query($conn,$sql);
 
-}
 
 ?>
 <!DOCTYPE html>
@@ -25,8 +17,8 @@ mysqli_query($conn,$sql);
 <body>
  
 <form action="index.php" method="POST">
-    <input type="text" name="FirstName" id="FirstName " placeholder="First Name">
-    <input type="text" name="LastName" id="LastName" placeholder="Last Name">
+    <input type="text" name="FirstName" id="FirstName " placeholder="First Name" > <br>
+    <input type="text" name="LastName" id="LastName" placeholder="Last Name"><br>
     <input type="text" name="Email" id="Email" placeholder="Email">
     <input type="submit" name="submit" value="send">
 
