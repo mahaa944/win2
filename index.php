@@ -1,19 +1,19 @@
 <?php
-$conn=mysqli_connect('localhost','root','root','win2');
+include './inc/db.php';
 
-if($conn){
-    echo'success';
-}else{
-    echo'fail';
-}
 $FirstName =  $_POST['FirstName'];
 $LastName =   $_POST['LastName'];
 $Email =      $_POST['Email'];
 
+if (isset($_POST['submit'])){
+//echo $FirstName . '' . $LastName .'' . $Email;
+$sql="INSERT INTO users(FirsName,LastName,Email)
+VALUES('$FirstName','$LastName','$Email')";
+mysqli_query($conn,$sql);
 
-echo $FirstName . '' . $LastName .'' . $Email;
+}
+
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
